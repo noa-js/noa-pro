@@ -84,6 +84,7 @@
     "vite-plugin-html": "^3.1.0",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-pages": "^0.21.4",
+    "vite-plugin-restart": "^0.1.1",
     "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-vue-layouts": "^0.6.0",
     "vite-plugin-webfont-dl": "^1.0.9",

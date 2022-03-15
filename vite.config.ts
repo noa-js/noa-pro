@@ -13,6 +13,7 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import Pages from 'vite-plugin-pages';
 import Layouts from 'vite-plugin-vue-layouts';
+import ViteRestart from 'vite-plugin-restart';
 
 import pages from './config/pages';
 import proxy from './config/proxy';
@@ -24,6 +25,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   return {
     plugins: [
       vue(),
+      ViteRestart({
+        restart: ['config/*', '.env*'],
+      }),
       Pages(pages),
       Layouts(),
       viteMockServe({
