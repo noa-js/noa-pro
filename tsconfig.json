@@ -32,8 +32,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "types/**/*.d.ts",
-    "types/**/*.ts",
+    "typings/**/*.d.ts",
+    "typings/**/*.ts",
     "mock/**/*.ts",
     "vite.config.ts",
     "components.d.ts"

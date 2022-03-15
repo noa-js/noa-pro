@@ -1,17 +1,30 @@
 import axios from 'axios';
+import { ElNotification } from 'element-plus';
+import type { AxiosRequestConfig } from 'axios';
 
-const request = axios.create({});
+const axiosInstance = axios.create({});
 
-// 请求拦截器
-request.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   (req) => req,
   (err) => err,
 );
 
-// 响应拦截器
-request.interceptors.response.use(
-  (res) => res,
+axiosInstance.interceptors.response.use(
+  (res) => {
+    const data: API.Response<any> = res.data;
+
+    if (data.success === false && typeof data.error_message !== 'undefined') {
+      ElNotification.error({
+        title: `[${data.code}] Request Error`,
+        message: data.error_message,
+      });
+    }
+
+    return data;
+  },
   (err) => err,
 );
 
-export default request;
+export default async function request<T>(config: AxiosRequestConfig): Promise<API.Response<T>> {
+  return (await axiosInstance.request(config)).data;
+}
