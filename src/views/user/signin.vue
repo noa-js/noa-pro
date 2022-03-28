@@ -37,8 +37,9 @@
         style="width: 100%"
         :icon="CaretRight"
         @click="handleClick(formRef)"
+        :loading="state.matches('pending')"
       >
-        {{ t('button-login') }}
+        {{ t('button-signin') }}
       </el-button>
     </el-card>
   </div>
@@ -49,13 +50,14 @@
   import { useI18n } from 'vue-i18n';
   import type { FormRules, FormInstance } from 'element-plus';
   import { Key, User, CaretRight } from '@element-plus/icons-vue';
-  import { login } from '@/services/user';
+  import { useMachine } from '@xstate/vue';
+  import signinMachine from '@/machines/signin';
 
   const { t } = useI18n();
 
   const formRef = ref<FormInstance>();
 
-  const formData = ref<API.LoginData>({
+  const formData = ref<API.SigninData>({
     username: '',
     password: '',
   });
@@ -65,12 +67,14 @@
     password: [{ required: true, trigger: 'blur' }],
   });
 
+  const { state, send } = useMachine(signinMachine);
+
   const handleClick = async (form?: FormInstance) => {
     if (!form) return;
 
     await form.validate(async (valid, fields) => {
       if (valid) {
-        await login(formData.value);
+        send('signin', formData.value);
       } else {
         Promise.reject(fields);
       }
@@ -136,6 +140,7 @@
 <route lang="yaml">
 meta:
   layout: unauthenticated
+  noAuthenticationRequired: true
 </route>
 
 <i18n>
@@ -143,5 +148,5 @@ en_US:
   title: SignIn
   form-username: Username
   form-password: Password
-  button-login: SignIn
+  button-signin: SignIn
 </i18n>

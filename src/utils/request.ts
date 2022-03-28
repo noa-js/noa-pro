@@ -18,6 +18,7 @@ axiosInstance.interceptors.response.use(
         title: `[${data.code}] Request Error`,
         message: data.error_message,
       });
+      return Promise.reject(data.error_message);
     }
 
     return data;

@@ -1,10 +1,10 @@
 declare namespace API {
-  type LoginData = {
+  type SigninData = {
     username: string;
     password: string;
   };
 
-  type LoginResponse = {
+  type SigninResponse = {
     token: string;
   };
 }

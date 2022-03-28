@@ -9,4 +9,18 @@ const router = createRouter({
   routes,
 });
 
+router.beforeResolve((to) => {
+  const isAuthenticated = localStorage.getItem('token');
+
+  if (to.meta.noAuthenticationRequired && isAuthenticated) {
+    router.push('/');
+    return;
+  }
+
+  if (!to.meta.noAuthenticationRequired && !isAuthenticated) {
+    router.push('/user/signin');
+    return;
+  }
+});
+
 export default router;
