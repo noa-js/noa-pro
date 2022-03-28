@@ -42,8 +42,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       }),
       createHtmlPlugin({
         minify: true,
-        entry: 'src/main.ts',
-        template: 'public/index.html',
+        entry: '/src/main.ts',
+        template: '/index.html',
         inject: {
           data: {
             title: env.VITE_APP_NAME,
