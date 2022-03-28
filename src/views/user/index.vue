@@ -1,6 +1,6 @@
-<route>
+<route lang="yaml">
 redirect:
-  name: user-login
+  name: user-signin
 meta:
   layout: unauthenticated
 </route>
