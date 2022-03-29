@@ -85,18 +85,14 @@
 <style lang="scss" scoped>
   $width: 400px;
   $height: 230px;
-  $color: #fff;
+  $color: white;
   $opacity-color: #ffffff00;
-
-  .wrapper {
-    height: 100%;
-  }
 
   .main-card {
     width: $width;
     height: $height;
     position: relative;
-    top: calc(30% - $height / 2);
+    top: 100px;
     left: calc(50% - $width / 2);
 
     &__form {
@@ -133,7 +129,7 @@
     --el-input-bg-color: $opacity-color;
     --el-input-placeholder-color: #ffffffaf;
     --el-text-color-placeholder: #e4e4e4;
-    --el-text-color-secondary: #fff;
+    --el-text-color-secondary: white;
   }
 </style>
 
