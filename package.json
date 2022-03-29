@@ -73,7 +73,6 @@
     "prettier": "^2.3.2",
     "sass": "^1.38.1",
     "stylelint": "^14.5.3",
-    "stylelint-config-html": "^1.0.0",
     "stylelint-scss": "^4.1.0",
     "ts-jest": "^27.0.5",
     "ts-vue-plugin": "^0.1.3",
