@@ -11,6 +11,11 @@ declare module '*.vue' {
 
 declare module '*.yaml' {}
 
+declare module '*.scss' {
+  const css: any;
+  export default css;
+}
+
 interface ImportMetaEnv {
   readonly VITE_APP_NAME: string;
 }
