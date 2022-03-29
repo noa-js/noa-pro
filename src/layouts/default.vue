@@ -33,6 +33,7 @@
     position: relative;
     height: 100%;
     width: 100%;
+    background-color: #f0f2f5;
   }
 
   .fixed-header {
