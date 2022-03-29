@@ -51,7 +51,7 @@
   import type { FormRules, FormInstance } from 'element-plus';
   import { Key, User, CaretRight } from '@element-plus/icons-vue';
   import { useMachine } from '@xstate/vue';
-  import signinMachine from '@/machines/signin';
+  import signinMachine from '@/machines/signin.machine';
 
   const { t } = useI18n();
 
