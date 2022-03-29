@@ -17,11 +17,9 @@ export default [
     url: '/api/v1/me/',
     method: 'get',
     timeout: 500,
-    data: {
-      code: 401,
+    response: {
       success: true,
-      username: 'admin',
-      email: 'admin@noa.com',
+      data: { username: 'admin', email: 'admin@noa.com' },
     },
   },
 ] as MockMethod[];

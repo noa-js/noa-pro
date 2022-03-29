@@ -20,8 +20,12 @@
   import NavBar from './components/NavBar.vue';
   import AppMain from './components/AppMain.vue';
   import Footer from './components/Footer.vue';
+  import InitialStateMachine from '@/machines/initialState.machine';
 
   import variables from '@/styles/variables.module.scss';
+  import { useMachine } from '@xstate/vue';
+
+  useMachine(InitialStateMachine);
 </script>
 
 <style lang="scss" scoped>

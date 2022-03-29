@@ -7,4 +7,8 @@ declare namespace API {
   type SigninResponse = {
     token: string;
   };
+
+  type CurrentUser = {
+    username: string;
+  };
 }
