@@ -1,18 +1,16 @@
 import { signin } from '@/services/user';
 import { assign, createMachine } from 'xstate';
 import router from '@/router';
+import { setToken } from '@/utils/token';
 
-type FormValue = {
-  username: string;
-  password: string;
-};
-
-const initialContext: FormValue = {
+const initialContext = {
   username: '',
   password: '',
 };
 
-const signinMachine = createMachine<FormValue>(
+type Context = typeof initialContext;
+
+const signinMachine = createMachine<Context>(
   {
     id: 'signin',
     initial: 'loggedOut',
@@ -51,7 +49,7 @@ const signinMachine = createMachine<FormValue>(
         password: (_, e) => e.password,
       }),
       saveToken: (_, e) => {
-        localStorage.setItem('token', e.data.token);
+        setToken(e.data.token);
         router.push('/');
       },
     },
