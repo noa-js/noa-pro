@@ -27,6 +27,7 @@
 <style lang="scss" scoped>
   @import '@/styles/mixins.scss';
   @import '@/styles/variables.module.scss';
+  @import '@/styles/sidebar.scss';
 
   .app-wrapper {
     @include clearfix;

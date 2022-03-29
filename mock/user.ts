@@ -13,4 +13,15 @@ export default [
       }
     },
   },
+  {
+    url: '/api/v1/me/',
+    method: 'get',
+    timeout: 500,
+    data: {
+      code: 401,
+      success: true,
+      username: 'admin',
+      email: 'admin@noa.com',
+    },
+  },
 ] as MockMethod[];
