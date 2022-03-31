@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <div class="message">{{ msg }}</div>
   </div>
 </template>
 
@@ -10,3 +10,10 @@
   }
   defineProps<Props>();
 </script>
+
+<style lang="scss" scoped>
+  .message {
+    font-size: 24px;
+    font-weight: bold;
+  }
+</style>

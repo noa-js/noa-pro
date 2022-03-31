@@ -2,7 +2,7 @@
   <div class="wrapper">
     <el-card class="main-card">
       <template #header>
-        <h3>{{ t('title') }}</h3>
+        <div class="title">{{ t('title') }}</div>
       </template>
       <el-form
         class="main-card__form"
@@ -94,6 +94,11 @@
     position: relative;
     top: 100px;
     left: calc(50% - $width / 2);
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
     &__form {
       width: $width - 40;

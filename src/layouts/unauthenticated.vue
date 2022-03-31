@@ -1,7 +1,7 @@
 <template>
   <div class="unauthenticated-wrapper">
     <div class="desc-card">
-      <h1 class="desc-card__title">{{ t('title') }}</h1>
+      <div class="desc-card__title">{{ t('title') }}</div>
       <p class="desc-card__description">{{ t('description') }}</p>
     </div>
     <router-view />

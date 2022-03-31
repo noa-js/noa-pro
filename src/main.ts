@@ -6,6 +6,8 @@ import i18n from './locales';
 import ElementPlus from 'element-plus';
 
 import 'element-plus/dist/index.css';
+import 'normalize.css';
+import 'reset.css';
 import './styles/index.scss';
 
 createApp(App).use(i18n).use(router).use(store).use(ElementPlus).mount('#app');
