@@ -1,6 +1,7 @@
-import { UserConfigExport, ConfigEnv, loadEnv } from 'vite';
+import { loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
+import type { UserConfigExport, ConfigEnv } from 'vite';
 
 import { viteMockServe } from 'vite-plugin-mock';
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
@@ -26,7 +27,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       ViteRestart({
-        restart: ['config/*', '.env*'],
+        restart: ['config/proxy.ts', 'config/pages.ts', '.env*'],
       }),
       Pages(pages),
       Layouts(),

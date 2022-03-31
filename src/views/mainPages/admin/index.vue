@@ -1,4 +1,4 @@
 <route lang="yaml">
 redirect:
-  name: welcome
+  name: admin-welcome
 </route>
