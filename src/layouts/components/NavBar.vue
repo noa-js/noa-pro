@@ -8,7 +8,7 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
-            <el-dropdown-item>{{ t('menu-logout') }}</el-dropdown-item>
+            <el-dropdown-item @click="logout">{{ t('menu-logout') }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -19,6 +19,7 @@
 <script setup lang="ts">
   import { UserFilled } from '@element-plus/icons-vue';
   import { useI18n } from 'vue-i18n';
+  import { logout } from '@/utils/user';
 
   const { t } = useI18n();
 </script>

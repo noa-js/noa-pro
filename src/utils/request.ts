@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { ElNotification } from 'element-plus';
 import type { AxiosRequestConfig } from 'axios';
-import { clearToken, getToken } from './token';
+import { getToken } from './token';
 import router from '@/router';
+import { logout } from './user';
 
 const axiosInstance = axios.create({});
 
@@ -32,8 +33,7 @@ axiosInstance.interceptors.response.use(
       });
 
       if (data.code == 401 && getToken()) {
-        clearToken();
-        router.push('/user/login');
+        logout();
       }
 
       return Promise.reject(data.error_message);

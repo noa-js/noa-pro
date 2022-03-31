@@ -1,6 +1,5 @@
-import router from '@/router';
 import { getCurrentUser } from '@/services/user';
-import { clearToken } from '@/utils/token';
+import { logout } from '@/utils/user';
 import { assign, createMachine } from 'xstate';
 
 const initialContext = {
@@ -40,10 +39,7 @@ const initialStateMachine = createMachine<Context>(
       saveData: assign({
         currentUser: (_, e) => e.data,
       }),
-      logout: () => {
-        clearToken();
-        router.push('/user/signin');
-      },
+      logout: logout,
     },
     services: {
       getInitialState: async () => {
