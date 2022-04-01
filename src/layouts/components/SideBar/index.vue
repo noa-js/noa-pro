@@ -2,7 +2,7 @@
   <div class="sidebar-wrapper">
     <div class="title-container" @click="() => router.push('/')">
       <img class="title-container__logo" alt="logo" src="/src/assets/logo.png" />
-      <div class="title-container__title">Noa Pro</div>
+      <div class="title-container__title">{{ basicConfig.appName }}</div>
     </div>
     <SideBarMenu />
   </div>
@@ -11,6 +11,7 @@
 <script setup lang="ts">
   import SideBarMenu from './SideBarMenu.vue';
   import { useRouter } from 'vue-router';
+  import basicConfig from '@/../config/basicConfig';
 
   const router = useRouter();
 </script>
