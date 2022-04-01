@@ -4,10 +4,11 @@
 
 <style lang="scss" scoped>
   .app-footer {
-    position: absolute;
-    bottom: 20px;
+    position: relative;
     left: 0;
     right: 0;
+    bottom: 0px;
+    padding: 20px 0px;
     text-align: center;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.45);

@@ -1,21 +1,21 @@
 #app {
   .main-container {
+    position: relative;
+    margin-left: $sideBarWidth;
     min-height: 100%;
     transition: margin-left 0.28s;
-    margin-left: $sideBarWidth;
-    position: relative;
   }
 
   .sidebar-container {
-    transition: width 0.28s;
-    width: $sideBarWidth !important;
-    height: 100%;
+    overflow: hidden;
     position: fixed;
+    left: 0;
     top: 0;
     bottom: 0;
-    left: 0;
     z-index: 1001;
-    overflow: hidden;
+    width: $sideBarWidth !important;
+    height: 100%;
+    transition: width 0.28s;
 
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
@@ -45,8 +45,8 @@
 
     a {
       display: inline-block;
-      width: 100%;
       overflow: hidden;
+      width: 100%;
     }
 
     .svg-icon {
@@ -54,14 +54,14 @@
     }
 
     .sub-el-icon {
-      margin-right: 12px;
       margin-left: -2px;
+      margin-right: 12px;
     }
 
     .el-menu {
       border: none;
-      height: 100%;
       width: 100% !important;
+      height: 100%;
     }
 
     .is-active > .el-submenu__title {
@@ -84,8 +84,8 @@
     }
 
     .submenu-title-noDropdown {
-      padding: 0 !important;
       position: relative;
+      padding: 0 !important;
 
       .el-tooltip {
         padding: 0 !important;
@@ -124,11 +124,11 @@
       .el-submenu {
         & > .el-submenu__title {
           & > span {
-            height: 0;
-            width: 0;
-            overflow: hidden;
-            visibility: hidden;
             display: inline-block;
+            visibility: hidden;
+            overflow: hidden;
+            width: 0;
+            height: 0;
           }
         }
       }
@@ -153,14 +153,14 @@
       margin-right: 16px;
     }
     .sub-el-icon {
-      margin-right: 12px;
       margin-left: -2px;
+      margin-right: 12px;
     }
   }
 
   > .el-menu--popup {
-    max-height: 100vh;
     overflow-y: auto;
+    max-height: 100vh;
 
     &::-webkit-scrollbar-track-piece {
       background: #d3dce6;
@@ -171,8 +171,8 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #99a9bf;
       border-radius: 20px;
+      background: #99a9bf;
     }
   }
 }

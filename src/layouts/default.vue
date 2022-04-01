@@ -8,22 +8,24 @@
     <div class="main-container">
       <div class="fixed-header">
         <NavBar />
+        <PageHeader class="page-header" />
       </div>
       <AppMain />
-      <Footer />
+      <Footer class="footer" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { useMachine } from '@xstate/vue';
   import SideBar from './components/SideBar/index.vue';
   import NavBar from './components/NavBar.vue';
   import AppMain from './components/AppMain.vue';
+  import PageHeader from './components/PageHeader.vue';
   import Footer from './components/Footer.vue';
   import initialStateMachine from '@/machines/initialState.machine';
 
   import variables from '@/styles/variables.module.scss';
-  import { useMachine } from '@xstate/vue';
 
   useMachine(initialStateMachine);
 </script>
@@ -34,18 +36,20 @@
   @import '@/styles/sidebar.scss';
 
   .app-wrapper {
-    @include clearfix;
     position: relative;
-    height: 100%;
     width: 100%;
+    height: 100%;
     background-color: #f0f2f5;
+
+    @include clearfix;
   }
 
   .fixed-header {
     position: fixed;
-    top: 0;
     right: 0;
+    top: 0;
     z-index: 9;
     width: calc(100% - #{$sideBarWidth});
+    height: 140px;
   }
 </style>

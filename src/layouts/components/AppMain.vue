@@ -1,16 +1,22 @@
 <template>
   <div class="app-main">
-    <router-view />
+    <div class="container">
+      <router-view />
+    </div>
   </div>
 </template>
 
+<script setup lang="ts"></script>
+
 <style lang="scss" scoped>
   .app-main {
-    min-height: calc(100vh - 50px);
-    width: 100%;
-    position: relative;
+    padding-top: 140px;
+  }
+  .container {
     overflow: hidden;
-    padding: 61px 20px 20px 20px;
     box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+    min-height: calc(100vh - 200px);
   }
 </style>

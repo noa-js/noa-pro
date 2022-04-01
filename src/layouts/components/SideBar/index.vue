@@ -23,18 +23,28 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      height: 50px;
       padding: 0 16px;
+      height: 50px;
       cursor: pointer;
 
       &__logo {
         width: 40px;
         height: 40px;
       }
+
       &__title {
-        font-size: 24px;
+        position: relative;
+        margin-left: 8px;
+        background: radial-gradient(farthest-side ellipse at 10% 0, #409eff, #37dd7c);
+        vertical-align: bottom;
+        text-align: center;
+        font-family: Stencil Std;
         font-weight: bold;
-        margin-left: 16px;
+        font-size: 24px;
+        transform: translateY(15%);
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
   }

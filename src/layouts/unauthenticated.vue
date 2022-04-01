@@ -20,25 +20,29 @@
   @import '@/styles/mixins.scss';
 
   .desc-card {
-    color: white;
     position: relative;
-    text-align: center;
     top: 50px;
+    text-align: center;
+    color: white;
 
     &__title {
-      font-size: 36px;
-      font-weight: bold;
       line-height: 50px;
+      font-weight: bold;
+      font-size: 36px;
     }
   }
 
   .unauthenticated-wrapper {
-    @include clearfix;
     height: 100%;
     background: radial-gradient(farthest-side ellipse at 10% 0, #4bc0e7, #1ab3b3);
+
+    @include clearfix;
   }
 
   .footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
     color: rgba(255, 255, 255, 0.726);
   }
 </style>

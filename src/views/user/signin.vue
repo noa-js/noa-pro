@@ -86,18 +86,18 @@
   $width: 400px;
   $height: 230px;
   $color: white;
-  $opacity-color: #ffffff00;
+  $opacity-color: #ff00;
 
   .main-card {
+    position: relative;
+    left: calc(50% - $width / 2);
+    top: 100px;
     width: $width;
     height: $height;
-    position: relative;
-    top: 100px;
-    left: calc(50% - $width / 2);
 
     .title {
-      font-size: 24px;
       font-weight: bold;
+      font-size: 24px;
     }
 
     &__form {
@@ -106,33 +106,34 @@
   }
 
   .el-card {
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    overflow: hidden;
     position: relative;
     z-index: 1;
-    background: inherit;
-    overflow: hidden;
-    color: $color;
     border-color: $opacity-color;
+    border-radius: 5px;
+    background: inherit;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    color: $color;
+
+    --el-text-color-regular: $color;
     &:before {
-      content: '';
       position: absolute;
-      background: inherit;
-      z-index: -1;
-      top: 0;
       left: 0;
       right: 0;
+      top: 0;
       bottom: 0;
+      z-index: -1;
+      margin: -20px;
+      background: inherit;
       box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.3);
       filter: blur(10px);
-      margin: -20px;
+      content: '';
     }
-    --el-text-color-regular: $color;
   }
 
   .el-input {
     --el-input-bg-color: $opacity-color;
-    --el-input-placeholder-color: #ffffffaf;
+    --el-input-placeholder-color: #fffaf;
     --el-text-color-placeholder: #e4e4e4;
     --el-text-color-secondary: white;
   }

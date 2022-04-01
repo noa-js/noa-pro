@@ -1,5 +1,6 @@
 <template>
   <div class="navbar">
+    <div class="left-container"></div>
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="hover">
         <div class="avatar-wrapper">
@@ -26,28 +27,32 @@
 
 <style lang="scss" scoped>
   .navbar {
-    height: 50px;
     overflow: hidden;
     position: relative;
+    height: 50px;
     background: rgba(255, 255, 255, 0.801);
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
+    .left-container {
+      display: inline-flex;
+    }
+
     .right-menu {
-      display: flex;
-      align-items: center;
+      display: inline-flex;
       float: right;
+      align-items: center;
       padding-right: 24px;
       height: 100%;
 
       .avatar-container {
+        padding: 0 10px;
+        height: 100%;
         cursor: pointer;
         font-size: 14px;
-        height: 100%;
-        padding: 0 10px;
 
         &:hover {
-          transition: background-color 0.5s;
           background-color: rgb(245, 245, 245);
+          transition: background-color 0.5s;
         }
 
         .avatar-wrapper {
