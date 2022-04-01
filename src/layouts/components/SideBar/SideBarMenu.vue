@@ -39,7 +39,7 @@
 <script setup lang="ts">
   import { useRoute } from 'vue-router';
   import SideBarItem from './SideBarItem.vue';
-  import routesMenu from '@/../config/routesMenu';
+  import routesMenu from '@/../config/routerMenu';
   import type { RouteRecordNormalized } from 'vue-router';
 
   type Props = {

@@ -11,7 +11,7 @@
 <script setup lang="ts">
   import { useRouter } from 'vue-router';
   import SideBarMenu, { useSideBarMenu } from './SideBarMenu.vue';
-  import basicConfig from '@/../config/basicConfig';
+  import basicConfig from '@/../config/basic';
 
   const router = useRouter();
   const { routes } = useSideBarMenu(router.getRoutes());
