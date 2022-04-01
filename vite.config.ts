@@ -27,7 +27,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       ViteRestart({
-        restart: ['config/*', '.env*'],
+        restart: ['config/pages.ts', 'config/proxy.ts', '.env*'],
+        reload: ['config/basicConfig.ts', 'config/routesMenu.ts'],
       }),
       Pages(pages),
       Layouts(),

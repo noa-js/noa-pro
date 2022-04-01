@@ -1,17 +1,23 @@
-const menuConfig: Config.RoutesMenu[] = [
+import { HomeFilled, Trophy, Eleme } from '@element-plus/icons-vue';
+
+const menuConfig: Config.RouterMenu[] = [
   {
     name: 'welcome',
-    icon: 'home',
+    icon: HomeFilled,
   },
   {
     name: 'admin',
-    icon: 'home',
+    icon: Trophy,
     children: [
       {
         name: 'welcome',
-        icon: 'home',
       },
     ],
+  },
+  {
+    name: 'goToEleme',
+    icon: Eleme,
+    href: 'https://www.ele.me/',
   },
 ];
 

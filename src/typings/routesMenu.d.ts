@@ -1,15 +1,10 @@
 declare namespace Config {
-  type RoutesMenu = {
+  type RouterMenu = {
     name: string;
-    icon?: string;
-    children?: RoutesMenu[];
-  };
-
-  type FullRoutesMenu = {
-    name: string;
-    icon?: string;
-    path: string;
-    meta: Record<string, any>;
-    children?: FullRoutesMenu[];
+    href?: string;
+    icon?: routerMenuConfig;
+    path?: string;
+    meta?: Record<string, any>;
+    children?: RouterMenu[];
   };
 }

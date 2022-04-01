@@ -4,16 +4,17 @@
       <img class="title-container__logo" alt="logo" src="/src/assets/logo.png" />
       <div class="title-container__title">{{ basicConfig.appName }}</div>
     </div>
-    <SideBarMenu />
+    <SideBarMenu :routes="routes" />
   </div>
 </template>
 
 <script setup lang="ts">
-  import SideBarMenu from './SideBarMenu.vue';
   import { useRouter } from 'vue-router';
+  import SideBarMenu, { useSideBarMenu } from './SideBarMenu.vue';
   import basicConfig from '@/../config/basicConfig';
 
   const router = useRouter();
+  const { routes } = useSideBarMenu(router.getRoutes());
 </script>
 
 <style lang="scss" scoped>
