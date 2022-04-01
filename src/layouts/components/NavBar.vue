@@ -1,6 +1,10 @@
 <template>
   <div class="navbar">
-    <div class="left-container"></div>
+    <div class="left-container">
+      <el-icon class="collapse-icon" :size="30" @click="handleClick">
+        <component :is="routerMenuCollapseState.matches('notCollapsed') ? Fold : Expand" />
+      </el-icon>
+    </div>
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="hover">
         <div class="avatar-wrapper">
@@ -18,11 +22,17 @@
 </template>
 
 <script setup lang="ts">
-  import { UserFilled } from '@element-plus/icons-vue';
   import { useI18n } from 'vue-i18n';
+  import { UserFilled, Fold, Expand } from '@element-plus/icons-vue';
   import { logout } from '@/utils/user';
+  import { useRouterMenuCollapse } from '@/hooks';
 
   const { t } = useI18n();
+  const { state: routerMenuCollapseState, send: routerMenuCollapseSend } = useRouterMenuCollapse();
+
+  const handleClick = () => {
+    routerMenuCollapseSend('CLICK');
+  };
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +45,13 @@
 
     .left-container {
       display: inline-flex;
+      align-items: center;
+      margin-left: 10px;
+      height: 100%;
+
+      .collapse-icon {
+        cursor: pointer;
+      }
     }
 
     .right-menu {

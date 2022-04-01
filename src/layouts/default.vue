@@ -17,6 +17,7 @@
 </template>
 
 <script setup lang="ts">
+  import { provide } from 'vue';
   import { useMachine } from '@xstate/vue';
   import SideBar from './components/SideBar/index.vue';
   import NavBar from './components/NavBar.vue';
@@ -24,10 +25,16 @@
   import PageHeader from './components/PageHeader.vue';
   import Footer from './components/Footer.vue';
   import initialStateMachine from '@/machines/initialState.machine';
+  import routerMenuCollapseMachine from '@/machines/routerMenuCollapse.machine';
 
   import variables from '@/styles/variables.module.scss';
 
   useMachine(initialStateMachine);
+  const { state: routerMenuCollapseState, send: routerMenuCollapseSend } =
+    useMachine(routerMenuCollapseMachine);
+
+  provide('routerMenuCollapseState', routerMenuCollapseState);
+  provide('routerMenuCollapseSend', routerMenuCollapseSend);
 </script>
 
 <style lang="scss" scoped>
