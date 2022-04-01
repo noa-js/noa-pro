@@ -27,7 +27,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       ViteRestart({
-        restart: ['config/proxy.ts', 'config/pages.ts', '.env*'],
+        restart: ['config/*', '.env*'],
       }),
       Pages(pages),
       Layouts(),
@@ -68,7 +68,6 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     server: {
       port: 8080,
-      open: true,
       cors: true,
       host: true,
 

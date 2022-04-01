@@ -67,8 +67,7 @@
   import type { RouteRecordNormalized } from 'vue-router';
 
   const router = useRouter();
-  const routes = router.getRoutes();
-  const { menuConfigGenerator } = useSideBarMenu(routes);
+  const { menuConfigGenerator } = useSideBarMenu(router.getRoutes());
 
   const menuConfig = routesMenu.map(menuConfigGenerator);
   console.log(menuConfig);

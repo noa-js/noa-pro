@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { setupLayouts } from 'virtual:generated-layouts';
 import generatedRoutes from 'virtual:generated-pages';
+import { getToken } from '@/utils/token';
 
 const routes = setupLayouts(generatedRoutes);
 
@@ -10,7 +11,7 @@ const router = createRouter({
 });
 
 router.beforeResolve((to) => {
-  const isAuthenticated = localStorage.getItem('token');
+  const isAuthenticated = getToken();
 
   if (to.meta.noAuthenticationRequired && isAuthenticated) {
     router.push('/');

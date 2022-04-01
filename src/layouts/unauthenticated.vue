@@ -28,6 +28,7 @@
     &__title {
       font-size: 36px;
       font-weight: bold;
+      line-height: 50px;
     }
   }
 
