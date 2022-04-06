@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@xstate/vue": "^1.0.0",
+    "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "element-plus": "^2.0.5",
     "normalize.css": "^8.0.1",

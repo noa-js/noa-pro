@@ -4,7 +4,7 @@
       <div class="desc-card__title">{{ t('title') }}</div>
       <p class="desc-card__description">{{ t('description') }}</p>
     </div>
-    <SuspenseRouterView />
+    <SuspenseRouterView :open-animation="true" />
     <Footer class="footer" />
   </div>
 </template>

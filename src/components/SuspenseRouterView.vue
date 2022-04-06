@@ -1,13 +1,29 @@
 <template>
   <suspense>
     <template #default>
-      <router-view />
+      <transition
+        v-if="props.openAnimation ?? false"
+        enter-active-class="animate__animated animate__fadeIn"
+      >
+        <router-view />
+      </transition>
+      <router-view v-else />
     </template>
     <template #fallback>
-      <div class="loading"> Loading... </div>
+      <transition enter-active-class="animate__animated animate__fadeIn">
+        <div class="loading"> Loading... </div>
+      </transition>
     </template>
   </suspense>
 </template>
+
+<script setup lang="ts">
+  type Props = {
+    openAnimation?: boolean;
+  };
+
+  const props = defineProps<Props>();
+</script>
 
 <style lang="scss" scoped>
   .loading {

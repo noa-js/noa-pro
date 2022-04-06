@@ -1,7 +1,7 @@
 <template>
   <div class="app-main">
     <div class="container">
-      <SuspenseRouterView />
+      <SuspenseRouterView :open-animation="true" />
     </div>
   </div>
 </template>
