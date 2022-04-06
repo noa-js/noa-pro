@@ -1,5 +1,8 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    class="app-wrapper"
+    :class="[routerMenuCollapseState.matches('isCollapsed') ? 'hideSidebar' : 'openSidebar']"
+  >
     <SideBar
       id="guide-sidebar"
       class="sidebar-container"
@@ -58,5 +61,10 @@
     z-index: 9;
     width: calc(100% - #{$sideBarWidth});
     height: 140px;
+    transition: width 0.28s;
+  }
+
+  .hideSidebar .fixed-header {
+    width: calc(100% - #{$hideSideBarWidth});
   }
 </style>

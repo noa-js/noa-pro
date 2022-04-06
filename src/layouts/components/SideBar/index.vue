@@ -2,7 +2,9 @@
   <div class="sidebar-wrapper">
     <div class="title-container" @click="() => router.push('/')">
       <img class="title-container__logo" alt="logo" src="/src/assets/logo.png" />
-      <div class="title-container__title">{{ basicConfig.appName }}</div>
+      <div class="title-container__title" v-if="routerMenuCollapseState.matches('notCollapsed')">
+        {{ basicConfig.appName }}
+      </div>
     </div>
     <SideBarMenu :routes="routes" />
   </div>
@@ -12,9 +14,12 @@
   import { useRouter } from 'vue-router';
   import SideBarMenu, { useSideBarMenu } from './SideBarMenu.vue';
   import basicConfig from '@/../config/basic';
+  import { useRouterMenuCollapse } from '@/hooks';
 
   const router = useRouter();
   const { routes } = useSideBarMenu(router.getRoutes());
+
+  const { state: routerMenuCollapseState } = useRouterMenuCollapse();
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +28,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: 0 16px;
+      padding: 0 12px;
       height: 50px;
       cursor: pointer;
 
@@ -33,14 +38,17 @@
       }
 
       &__title {
+        overflow: hidden;
         position: relative;
         margin-left: 8px;
         background: radial-gradient(farthest-side ellipse at 10% 0, #409eff, #37dd7c);
         vertical-align: bottom;
+        text-overflow: ellipsis;
         text-align: center;
         font-family: Stencil Std;
         font-weight: bold;
         font-size: 24px;
+        white-space: nowrap;
         transform: translateY(15%);
 
         -webkit-background-clip: text;

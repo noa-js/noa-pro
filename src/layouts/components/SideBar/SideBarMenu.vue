@@ -52,3 +52,9 @@
   const props = defineProps<Props>();
   const { state: routerMenuCollapseState } = useRouterMenuCollapse();
 </script>
+
+<style lang="scss" scoped>
+  .el-menu {
+    border-right: none;
+  }
+</style>
