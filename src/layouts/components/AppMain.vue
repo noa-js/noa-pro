@@ -1,7 +1,7 @@
 <template>
   <div class="app-main">
     <div class="container">
-      <router-view />
+      <SuspenseRouterView />
     </div>
   </div>
 </template>

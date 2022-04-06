@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <SuspenseRouterView />
 </template>
 
 <script lang="ts">
