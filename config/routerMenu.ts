@@ -1,4 +1,4 @@
-import { HomeFilled, Trophy, Eleme } from '@element-plus/icons-vue';
+import { HomeFilled, Trophy, ElementPlus } from '@element-plus/icons-vue';
 
 const menuConfig: Config.RouterMenu[] = [
   {
@@ -15,9 +15,9 @@ const menuConfig: Config.RouterMenu[] = [
     ],
   },
   {
-    name: 'goToEleme',
-    icon: Eleme,
-    href: 'https://www.ele.me/',
+    name: 'ElementPlus',
+    icon: ElementPlus,
+    href: 'https://element-plus.gitee.io/',
   },
 ];
 
