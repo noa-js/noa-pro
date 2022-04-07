@@ -6,6 +6,7 @@
       </el-icon>
     </div>
     <div class="right-menu">
+      <HeaderSearch />
       <el-dropdown class="avatar-container" trigger="hover">
         <div class="avatar-wrapper">
           <el-avatar :icon="UserFilled" size="small" />
@@ -26,6 +27,7 @@
   import { UserFilled, Fold, Expand } from '@element-plus/icons-vue';
   import { logout } from '@/utils/user';
   import { useRouterMenuCollapse } from '@/hooks';
+  import HeaderSearch from './HeaderSearch.vue';
 
   const { t } = useI18n();
   const { state: routerMenuCollapseState, send: routerMenuCollapseSend } = useRouterMenuCollapse();
