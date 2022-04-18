@@ -11,6 +11,9 @@
     >
       {{ t(`page-${tag.name}`) }}
     </Tag>
+    <el-tooltip :content="t('tag-view-close-other')">
+      <el-icon class="close-other" :size="20" @click="closeOtherTag"><close-bold /></el-icon>
+    </el-tooltip>
   </div>
 </template>
 
@@ -32,6 +35,7 @@
   import { useRoute } from 'vue-router';
   import Tag from './Tag.vue';
   import type { LocationQuery, RouteParams } from 'vue-router';
+  import { CloseBold } from '@element-plus/icons-vue';
 
   const route = useRoute();
   const { t } = useI18n();
@@ -40,6 +44,10 @@
 
   const deleteTag = (tagName: string) => {
     tags.value = tags.value.filter((v) => v.name !== tagName);
+  };
+
+  const closeOtherTag = () => {
+    tags.value = tags.value.filter((v) => v.name === route.name);
   };
 
   watch(
@@ -67,11 +75,23 @@
   .tag-view {
     display: flex;
     overflow-x: auto;
+    align-items: center;
     box-sizing: border-box;
-    padding: 5px;
+    padding: 5px 10px;
     width: 100%;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 2px 4px rgba(0, 21, 41, 0.08);
+
+    .close-other {
+      position: relative;
+      margin-left: auto;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #409eff;
+      }
+    }
   }
 
   ::-webkit-scrollbar {
@@ -90,3 +110,8 @@
     background-color: #c2c2c2;
   }
 </style>
+
+<i18n>
+en_US:
+  tag-view-close-other: Close other tags
+</i18n>
