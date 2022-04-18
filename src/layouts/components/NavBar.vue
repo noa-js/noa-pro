@@ -4,6 +4,7 @@
       <el-icon class="collapse-icon" :size="30" @click="handleClick">
         <component :is="routerMenuCollapseState.matches('notCollapsed') ? Fold : Expand" />
       </el-icon>
+      <Breadcrumb />
     </div>
     <div class="right-menu">
       <HeaderSearch />
@@ -28,6 +29,7 @@
   import { logout } from '@/utils/user';
   import { useRouterMenuCollapse } from '@/hooks';
   import HeaderSearch from './HeaderSearch.vue';
+  import Breadcrumb from './Breadcrumb.vue';
 
   const { t } = useI18n();
   const { state: routerMenuCollapseState, send: routerMenuCollapseSend } = useRouterMenuCollapse();
@@ -42,7 +44,7 @@
     overflow: hidden;
     position: relative;
     height: 50px;
-    background: rgba(255, 255, 255, 0.801);
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
     .left-container {
@@ -52,6 +54,7 @@
       height: 100%;
 
       .collapse-icon {
+        margin-right: 10px;
         cursor: pointer;
       }
     }

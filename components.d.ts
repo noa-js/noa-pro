@@ -25,6 +25,7 @@ declare module 'vue' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSubmenu: typeof import('element-plus/es')['ElSubmenu']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElTag: typeof import('element-plus/es')['ElTag']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconElDocument: typeof import('@element-plus/icons-vue')['Document']
     SuspenseRouterView: typeof import('./src/components/SuspenseRouterView.vue')['default']

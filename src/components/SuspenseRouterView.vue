@@ -2,6 +2,7 @@
   <suspense>
     <template #default>
       <transition
+        appear
         v-if="props.openAnimation ?? false"
         enter-active-class="animate__animated animate__fadeIn"
       >

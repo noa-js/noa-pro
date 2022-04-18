@@ -10,7 +10,7 @@
 
 <style lang="scss" scoped>
   .app-main {
-    padding-top: 140px;
+    padding-top: 80px;
   }
   .container {
     overflow: hidden;

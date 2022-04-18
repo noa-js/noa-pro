@@ -11,7 +11,7 @@
     <div class="main-container">
       <div class="fixed-header">
         <NavBar />
-        <PageHeader class="page-header" />
+        <TagView />
       </div>
       <AppMain />
       <Footer class="footer" />
@@ -25,8 +25,8 @@
   import SideBar from './components/SideBar/index.vue';
   import NavBar from './components/NavBar.vue';
   import AppMain from './components/AppMain.vue';
-  import PageHeader from './components/PageHeader.vue';
   import Footer from './components/Footer.vue';
+  import TagView from './components/TagView/index.vue';
   import initialStateMachine from '@/machines/initialState.machine';
   import routerMenuCollapseMachine from '@/machines/routerMenuCollapse.machine';
 
