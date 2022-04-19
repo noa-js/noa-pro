@@ -21,7 +21,7 @@
 
   const route = useRoute();
   const pageNames = computed(() => {
-    const routes = route.fullPath.split('/').slice(1);
+    const routes = route.path.split('/').slice(1);
     const pageNames: string[] = [];
 
     const generator = (routePath: string) => {
