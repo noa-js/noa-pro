@@ -23,7 +23,7 @@
             <el-dropdown-item
               :key="tag.fullPath"
               v-for="tag in tags.filter((t) => t.fullPath !== route.fullPath)"
-              @click="dropdownClick(tag.name)"
+              @click="dropdownClick(tag.fullPath)"
             >
               {{ t(`page-${tag.name}`) }}
             </el-dropdown-item>
