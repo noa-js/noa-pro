@@ -3,7 +3,7 @@
     appear
     enter-active-class="animate__animated animate__fadeInRight animate__faster"
     leave-active-class="animate__animated animate__fadeOutLeft animate__faster"
-    @after-leave="emit('close', props.name)"
+    @after-leave="emit('close', props.fullPath)"
   >
     <el-tag
       class="tag"
@@ -14,7 +14,7 @@
       v-show="!hide"
       @close="
         () => {
-          if (route.name === props.name) {
+          if (route.fullPath === props.fullPath) {
             ElMessage.error(t('tag-close-error'));
           } else {
             hide = true;
@@ -45,12 +45,12 @@
   const hide = ref(false);
 
   const onClick = () => {
-    router.push({ name: props.name });
+    router.push(props.fullPath);
   };
 
   const props = defineProps<Props>();
   const emit = defineEmits<{
-    (event: 'close', tagName: string): void;
+    (event: 'close', fullPath: string): void;
   }>();
 </script>
 

@@ -1,19 +1,42 @@
 <template>
-  <div class="tag-view">
-    <Tag
-      v-for="tag in tags"
-      :key="tag.name"
-      :name="tag.name"
-      :full-path="tag.fullPath"
-      :active="route.name === tag.name"
-      @close="deleteTag"
-      closable
-    >
-      {{ t(`page-${tag.name}`) }}
-    </Tag>
-    <el-tooltip :content="t('tag-view-close-other')">
-      <el-icon class="close-other" :size="20" @click="closeOtherTag"><close-bold /></el-icon>
-    </el-tooltip>
+  <div class="wrapper">
+    <div class="tag-view">
+      <Tag
+        v-for="tag in tags"
+        :key="tag.fullPath"
+        :name="tag.name"
+        :full-path="tag.fullPath"
+        :active="route.fullPath === tag.fullPath"
+        @close="deleteTag"
+        closable
+      >
+        {{ t(`page-${tag.name}`) }}
+      </Tag>
+    </div>
+    <div class="extras">
+      <el-dropdown>
+        <el-icon class="extras__icon" :size="20">
+          <arrow-down-bold />
+        </el-icon>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item
+              :key="tag.fullPath"
+              v-for="tag in tags.filter((t) => t.fullPath !== route.fullPath)"
+              @click="dropdownClick(tag.name)"
+            >
+              {{ t(`page-${tag.name}`) }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+      <el-tooltip :content="t('tag-view-close-other')">
+        <el-icon class="extras__icon" :size="20" @click="closeOtherTag"><close-bold /> </el-icon>
+      </el-tooltip>
+      <el-tooltip :content="t('tag-view-refresh-page')">
+        <el-icon class="extras__icon" :size="20" @click="refreshPage"><refresh-left /></el-icon>
+      </el-tooltip>
+    </div>
   </div>
 </template>
 
@@ -25,29 +48,40 @@
     params: RouteParams;
     path: string;
     query: LocationQuery;
+    ref: Ref<any>;
   };
 </script>
 
 <script setup lang="ts">
-  import { watch } from 'vue';
+  import type { Ref } from 'vue';
+  import { watch, ref } from 'vue';
   import { useStorage } from '@vueuse/core';
   import { useI18n } from 'vue-i18n';
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import Tag from './Tag.vue';
   import type { LocationQuery, RouteParams } from 'vue-router';
-  import { CloseBold } from '@element-plus/icons-vue';
+  import { CloseBold, RefreshLeft, ArrowDownBold } from '@element-plus/icons-vue';
 
   const route = useRoute();
+  const router = useRouter();
   const { t } = useI18n();
   const tags = useStorage<TagData[]>('tags', [], sessionStorage);
   const whiteList = ['user-signin'];
 
-  const deleteTag = (tagName: string) => {
-    tags.value = tags.value.filter((v) => v.name !== tagName);
+  const deleteTag = (fullPath: string) => {
+    tags.value = tags.value.filter((v) => v.fullPath !== fullPath);
   };
 
   const closeOtherTag = () => {
-    tags.value = tags.value.filter((v) => v.name === route.name);
+    tags.value = tags.value.filter((v) => v.fullPath === route.fullPath);
+  };
+
+  const dropdownClick = (fullPath: string) => {
+    router.push(fullPath);
+  };
+
+  const refreshPage = () => {
+    router.go(0);
   };
 
   watch(
@@ -55,6 +89,7 @@
     (to) => {
       const { fullPath, meta, name, params, path, query } = to;
 
+      if (name === undefined) return;
       if (tags.value.find((v) => v.fullPath === fullPath)) return;
       if (whiteList.includes(name as string)) return;
 
@@ -65,6 +100,7 @@
         params,
         path,
         query,
+        ref: ref(),
       });
     },
     { immediate: true },
@@ -72,46 +108,52 @@
 </script>
 
 <style lang="scss" scoped>
-  .tag-view {
+  .wrapper {
     display: flex;
-    overflow-x: auto;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 5px 10px;
     width: 100%;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 2px 4px rgba(0, 21, 41, 0.08);
 
-    .close-other {
-      position: relative;
-      margin-left: auto;
-      cursor: pointer;
-      transition: color 0.2s;
+    .tag-view {
+      display: flex;
+      overflow: auto;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 5px 10px;
+      width: 100%;
+    }
 
-      &:hover {
-        color: #409eff;
+    .extras {
+      display: flex;
+      position: relative;
+      align-items: center;
+      box-sizing: border-box;
+      margin-left: auto;
+      padding: 5px 10px;
+      border-left: 1px solid #c2c2c248;
+
+      & > * {
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+
+      &__icon {
+        cursor: pointer;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #409eff;
+        }
       }
     }
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #f3f3f3;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-color: rgb(204, 204, 204);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    border-radius: 5px;
-    background-color: #c2c2c2;
   }
 </style>
 
 <i18n>
 en_US:
   tag-view-close-other: Close other tags
+  tag-view-refresh-page: Refresh page
 </i18n>
