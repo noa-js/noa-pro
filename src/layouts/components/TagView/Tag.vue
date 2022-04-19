@@ -15,21 +15,20 @@
       @close="
         () => {
           if (route.fullPath === props.fullPath) {
-            ElMessage.error(t('tag-close-error'));
+            ElMessage.error($t('tag-close-error'));
           } else {
             hide = true;
           }
         }
       "
     >
-      {{ t(`page-${props.name}`) }}
+      {{ $t(`page-${props.name}`) }}
     </el-tag>
   </transition>
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { useI18n } from 'vue-i18n';
   import { useRouter, useRoute } from 'vue-router';
   import { ElMessage } from 'element-plus';
 
@@ -39,7 +38,6 @@
     active: boolean;
   };
 
-  const { t } = useI18n();
   const router = useRouter();
   const route = useRoute();
   const hide = ref(false);

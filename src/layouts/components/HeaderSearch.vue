@@ -3,7 +3,7 @@
     <el-select
       class="header-search__select"
       v-model="searchSelected"
-      :placeholder="t('search-placeholder')"
+      :placeholder="$t('search-placeholder')"
       :remote-method="handleQuery"
       filterable
       remote

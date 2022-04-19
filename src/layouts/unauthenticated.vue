@@ -1,8 +1,8 @@
 <template>
   <div class="unauthenticated-wrapper">
     <div class="desc-card">
-      <div class="desc-card__title">{{ t('title') }}</div>
-      <p class="desc-card__description">{{ t('description') }}</p>
+      <div class="desc-card__title">{{ $t('title') }}</div>
+      <p class="desc-card__description">{{ $t('description') }}</p>
     </div>
     <SuspenseRouterView :open-animation="true" />
     <Footer class="footer" />
@@ -11,9 +11,6 @@
 
 <script setup lang="ts">
   import Footer from './components/Footer.vue';
-  import { useI18n } from 'vue-i18n';
-
-  const { t } = useI18n();
 </script>
 
 <style lang="scss" scoped>
