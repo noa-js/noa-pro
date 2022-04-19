@@ -19,6 +19,7 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+      <Locale />
     </div>
   </div>
 </template>
@@ -30,6 +31,7 @@
   import { useRouterMenuCollapse } from '@/hooks';
   import HeaderSearch from './HeaderSearch.vue';
   import Breadcrumb from './Breadcrumb.vue';
+  import Locale from './Locale.vue';
 
   const { t } = useI18n();
   const { state: routerMenuCollapseState, send: routerMenuCollapseSend } = useRouterMenuCollapse();
@@ -65,6 +67,14 @@
       align-items: center;
       height: 100%;
 
+      & > * {
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+
       .avatar-container {
         padding: 0 10px;
         height: 100%;
@@ -91,4 +101,6 @@
 <i18n>
 en_US:
   menu-logout: Logout
+zh_CN:
+  menu-logout: 注销
 </i18n>

@@ -77,8 +77,8 @@
         border: none;
         border-bottom: 1px solid #d9d9d9;
         border-radius: 0;
-        box-shadow: none !important;
         background: rgba(255, 255, 255, 0);
+        box-shadow: none !important;
       }
     }
   }
@@ -87,4 +87,6 @@
 <i18n>
 en_US:
   search-placeholder: Search Pages
+zh_CN:
+  search-placeholder: 搜索页面
 </i18n>

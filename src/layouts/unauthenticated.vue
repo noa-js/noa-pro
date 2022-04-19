@@ -51,4 +51,7 @@
 en_US:
   title: Noa Pro
   description: Noa's integrated back-office solution.
+zh_CN:
+  title: Noa Pro
+  description: Noa 综合后台解决方案
 </i18n>

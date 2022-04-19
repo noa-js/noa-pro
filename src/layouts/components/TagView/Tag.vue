@@ -67,4 +67,6 @@
 <i18n>
 en_US:
   tag-close-error: Cannot close the current Tag
+zh_CN:
+  tag-close-error: 无法关闭当前标签
 </i18n>

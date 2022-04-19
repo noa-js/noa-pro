@@ -156,4 +156,7 @@
 en_US:
   tag-view-close-other: Close other tags
   tag-view-refresh-page: Refresh page
+zh_CN:
+  tag-view-close-other: 关闭其他标签
+  tag-view-refresh-page: 刷新页面
 </i18n>

@@ -151,4 +151,9 @@ en_US:
   form-username: Username
   form-password: Password
   button-signin: SignIn
+zh_CN:
+  title: 登录
+  form-username: 用户名
+  form-password: 密码
+  button-signin: 登录
 </i18n>
