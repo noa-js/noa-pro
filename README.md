@@ -2,6 +2,8 @@
 
 Noa's integrated back-office solution.
 
+![alt NOW](./.assets/now.png)
+
 # Instructions
 
 ## Install Dependencies
