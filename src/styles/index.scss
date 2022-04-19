@@ -24,3 +24,19 @@ body {
 #app {
   height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f3f3f3;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgb(204, 204, 204);
+}
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 5px;
+  background-color: #c2c2c2;
+}
