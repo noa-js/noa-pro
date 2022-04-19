@@ -43,6 +43,7 @@
   .navbar {
     overflow: hidden;
     position: relative;
+    padding: 0 10px;
     height: 50px;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
@@ -50,7 +51,6 @@
     .left-container {
       display: inline-flex;
       align-items: center;
-      margin-left: 10px;
       height: 100%;
 
       .collapse-icon {
@@ -63,7 +63,6 @@
       display: inline-flex;
       float: right;
       align-items: center;
-      padding-right: 24px;
       height: 100%;
 
       .avatar-container {
