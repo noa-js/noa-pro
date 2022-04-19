@@ -10,7 +10,7 @@
         @close="deleteTag"
         closable
       >
-        {{ $t(`page-${tag.name}`) }}
+        {{ t(`page-${tag.name}`) }}
       </Tag>
     </div>
     <div class="extras">
@@ -25,15 +25,15 @@
               v-for="tag in tags.filter((t) => t.fullPath !== route.fullPath)"
               @click="dropdownClick(tag.fullPath)"
             >
-              {{ $t(`page-${tag.name}`) }}
+              {{ t(`page-${tag.name}`) }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-tooltip :content="$t('tag-view-close-other')">
+      <el-tooltip :content="t('tag-view-close-other')">
         <el-icon class="extras__icon" :size="20" @click="closeOtherTag"><close-bold /> </el-icon>
       </el-tooltip>
-      <el-tooltip :content="$t('tag-view-refresh-page')">
+      <el-tooltip :content="t('tag-view-refresh-page')">
         <el-icon class="extras__icon" :size="20" @click="refreshPage"><refresh-left /></el-icon>
       </el-tooltip>
     </div>
@@ -56,6 +56,7 @@
   import type { Ref } from 'vue';
   import { watch, ref } from 'vue';
   import { useStorage } from '@vueuse/core';
+  import { useI18n } from 'vue-i18n';
   import { useRoute, useRouter } from 'vue-router';
   import Tag from './Tag.vue';
   import type { LocationQuery, RouteParams } from 'vue-router';
@@ -63,6 +64,7 @@
 
   const route = useRoute();
   const router = useRouter();
+  const { t } = useI18n();
   const tags = useStorage<TagData[]>('tags', [], sessionStorage);
   const whiteList = ['user-signin'];
 

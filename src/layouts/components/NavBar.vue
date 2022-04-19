@@ -15,7 +15,7 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
-            <el-dropdown-item @click="logout">{{ $t('menu-logout') }}</el-dropdown-item>
+            <el-dropdown-item @click="logout">{{ t('menu-logout') }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -25,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
   import { UserFilled, Fold, Expand } from '@element-plus/icons-vue';
   import { logout } from '@/utils/user';
   import { useRouterMenuCollapse } from '@/hooks';
@@ -32,6 +33,7 @@
   import Breadcrumb from './Breadcrumb.vue';
   import Locale from './Locale.vue';
 
+  const { t } = useI18n();
   const { state: routerMenuCollapseState, send: routerMenuCollapseSend } = useRouterMenuCollapse();
 
   const handleClick = () => {

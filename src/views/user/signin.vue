@@ -2,7 +2,7 @@
   <div class="wrapper">
     <el-card class="main-card">
       <template #header>
-        <div class="title">{{ $t('title') }}</div>
+        <div class="title">{{ t('title') }}</div>
       </template>
       <el-form
         class="main-card__form"
@@ -13,7 +13,7 @@
         ref="formRef"
       >
         <el-form-item prop="username">
-          <el-input v-model="formData.username" :placeholder="$t('form-username')">
+          <el-input v-model="formData.username" :placeholder="t('form-username')">
             <template #prefix>
               <el-icon class="el-input__icon"><User /></el-icon>
             </template>
@@ -22,7 +22,7 @@
         <el-form-item prop="password">
           <el-input
             v-model="formData.password"
-            :placeholder="$t('form-password')"
+            :placeholder="t('form-password')"
             clearable
             show-password
           >
@@ -39,7 +39,7 @@
         @click="handleClick(formRef)"
         :loading="state.matches('pending')"
       >
-        {{ $t('button-signin') }}
+        {{ t('button-signin') }}
       </el-button>
     </el-card>
   </div>
@@ -47,10 +47,13 @@
 
 <script setup lang="ts">
   import { ref } from 'vue';
+  import { useI18n } from 'vue-i18n';
   import type { FormRules, FormInstance } from 'element-plus';
   import { Key, User, CaretRight } from '@element-plus/icons-vue';
   import { useMachine } from '@xstate/vue';
   import signinMachine from '@/machines/signin.machine';
+
+  const { t } = useI18n();
 
   const formRef = ref<FormInstance>();
 
