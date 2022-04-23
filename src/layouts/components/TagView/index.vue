@@ -66,7 +66,7 @@
   const router = useRouter();
   const { t } = useI18n();
   const tags = useStorage<TagData[]>('tags', [], sessionStorage);
-  const whiteList = ['user-signin'];
+  const whiteList = ['user-signin', 'all'];
 
   const deleteTag = (fullPath: string) => {
     tags.value = tags.value.filter((v) => v.fullPath !== fullPath);
