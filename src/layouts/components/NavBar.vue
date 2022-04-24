@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="left-container">
       <el-icon class="collapse-icon" :size="30" @click="handleClick">
-        <component :is="routerMenuCollapseState.matches('notCollapsed') ? Fold : Expand" />
+        <component :is="sideBarCollapseState.matches('notCollapsed') ? Fold : Expand" />
       </el-icon>
       <Breadcrumb />
     </div>
@@ -11,7 +11,7 @@
       <el-dropdown class="avatar-container" trigger="hover">
         <div class="avatar-wrapper">
           <el-avatar :icon="UserFilled" size="small" />
-          <span>admin</span>
+          <span>{{ initialState.context.currentUser.username }}</span>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
@@ -28,16 +28,21 @@
   import { useI18n } from 'vue-i18n';
   import { UserFilled, Fold, Expand } from '@element-plus/icons-vue';
   import { logout } from '@/utils/user';
-  import { useRouterMenuCollapse } from '@/hooks';
+  import { useInitialStateMachine } from '@/machines/initialState.machine';
+  import { useSideBarCollapse } from '@/machines/sideBarCollapse.machine';
   import HeaderSearch from './HeaderSearch.vue';
   import Breadcrumb from './Breadcrumb.vue';
   import Locale from './Locale.vue';
 
   const { t } = useI18n();
-  const { state: routerMenuCollapseState, send: routerMenuCollapseSend } = useRouterMenuCollapse();
+  const { state: sideBarCollapseState, send: sideBarCollapseSend } = useSideBarCollapse();
+
+  const { state: initialState } = useInitialStateMachine();
+
+  console.log(initialState);
 
   const handleClick = () => {
-    routerMenuCollapseSend('CLICK');
+    sideBarCollapseSend('CLICK');
   };
 </script>
 

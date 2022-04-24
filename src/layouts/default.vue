@@ -1,7 +1,8 @@
 <template>
   <div
     class="app-wrapper"
-    :class="[routerMenuCollapseState.matches('isCollapsed') ? 'hideSidebar' : 'openSidebar']"
+    :class="[sideBarCollapseState.matches('isCollapsed') ? 'hideSidebar' : 'openSidebar']"
+    v-if="initialState.matches('authenticated')"
   >
     <SideBar
       id="guide-sidebar"
@@ -17,27 +18,24 @@
       <Footer class="footer" />
     </div>
   </div>
+  <Loading v-else />
 </template>
 
 <script setup lang="ts">
-  import { provide } from 'vue';
-  import { useMachine } from '@xstate/vue';
   import SideBar from './components/SideBar/index.vue';
   import NavBar from './components/NavBar.vue';
   import AppMain from './components/AppMain.vue';
   import Footer from './components/Footer.vue';
   import TagView from './components/TagView/index.vue';
-  import initialStateMachine from '@/machines/initialState.machine';
-  import routerMenuCollapseMachine from '@/machines/routerMenuCollapse.machine';
+  import { useInitialStateMachine } from '@/machines/initialState.machine';
+  import { useSideBarCollapse } from '@/machines/sideBarCollapse.machine';
 
   import variables from '@/styles/variables.module.scss';
 
-  useMachine(initialStateMachine);
-  const { state: routerMenuCollapseState, send: routerMenuCollapseSend } =
-    useMachine(routerMenuCollapseMachine);
+  const { state: sideBarCollapseState } = useSideBarCollapse();
 
-  provide('routerMenuCollapseState', routerMenuCollapseState);
-  provide('routerMenuCollapseSend', routerMenuCollapseSend);
+  const { state: initialState, send: initialStateSend } = useInitialStateMachine();
+  initialStateSend('GET');
 </script>
 
 <style lang="scss" scoped>

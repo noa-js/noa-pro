@@ -73,7 +73,7 @@
 <style lang="scss" scoped>
   .header-search {
     &__select {
-      ::v-deep(.el-input__inner) {
+      ::v-deep(.el-input__wrapper) {
         border: none;
         border-bottom: 1px solid #d9d9d9;
         border-radius: 0;

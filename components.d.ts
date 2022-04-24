@@ -24,6 +24,7 @@ declare module 'vue' {
     ElTag: typeof import('element-plus/es')['ElTag']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Loading: typeof import('./src/components/Loading.vue')['default']
     SuspenseRouterView: typeof import('./src/components/SuspenseRouterView.vue')['default']
   }
 }

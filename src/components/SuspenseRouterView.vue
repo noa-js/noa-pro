@@ -1,18 +1,16 @@
 <template>
   <suspense>
     <template #default>
-      <transition
-        appear
-        v-if="props.openAnimation ?? false"
-        enter-active-class="animate__animated animate__fadeIn"
-      >
-        <router-view />
-      </transition>
+      <router-view v-slot="{ Component }" v-if="props.openAnimation ?? false">
+        <transition appear enter-active-class="animate__animated animate__fadeIn">
+          <component :is="Component" />
+        </transition>
+      </router-view>
       <router-view v-else />
     </template>
     <template #fallback>
       <transition enter-active-class="animate__animated animate__fadeIn">
-        <div class="loading"> Loading... </div>
+        <Loading />
       </transition>
     </template>
   </suspense>

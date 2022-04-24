@@ -2,7 +2,7 @@
   <div class="sidebar-wrapper">
     <div class="title-container" @click="() => router.push('/')">
       <img class="title-container__logo" alt="logo" src="/src/assets/logo.png" />
-      <div class="title-container__title" v-if="routerMenuCollapseState.matches('notCollapsed')">
+      <div class="title-container__title" v-if="sideBarCollapseState.matches('notCollapsed')">
         {{ basicConfig.appName }}
       </div>
     </div>
@@ -14,12 +14,12 @@
   import { useRouter } from 'vue-router';
   import SideBarMenu, { useSideBarMenu } from './SideBarMenu.vue';
   import basicConfig from '@/../config/basic';
-  import { useRouterMenuCollapse } from '@/hooks';
+  import { useSideBarCollapse } from '@/machines/sideBarCollapse.machine';
 
   const router = useRouter();
   const { routes } = useSideBarMenu(router.getRoutes());
 
-  const { state: routerMenuCollapseState } = useRouterMenuCollapse();
+  const { state: sideBarCollapseState } = useSideBarCollapse();
 </script>
 
 <style lang="scss" scoped>

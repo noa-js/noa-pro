@@ -4,7 +4,7 @@
       class="el-menu-vertical-demo"
       :default-active="(route.name as string)"
       :unique-opened="true"
-      :collapse="routerMenuCollapseState.matches('isCollapsed')"
+      :collapse="sideBarCollapseState.matches('isCollapsed')"
     >
       <SideBarItem :key="item.name" :route="item" v-for="item in props.routes" />
     </el-menu>
@@ -41,7 +41,7 @@
   import { useRoute } from 'vue-router';
   import SideBarItem from './SideBarItem.vue';
   import routesMenu from '@/../config/routerMenu';
-  import { useRouterMenuCollapse } from '@/hooks';
+  import { useSideBarCollapse } from '@/machines/sideBarCollapse.machine';
   import type { RouteRecordNormalized } from 'vue-router';
 
   type Props = {
@@ -50,7 +50,7 @@
 
   const route = useRoute();
   const props = defineProps<Props>();
-  const { state: routerMenuCollapseState } = useRouterMenuCollapse();
+  const { state: sideBarCollapseState } = useSideBarCollapse();
 </script>
 
 <style lang="scss" scoped>

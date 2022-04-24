@@ -1,6 +1,8 @@
 import { getCurrentUser } from '@/services/user';
 import { logout } from '@/utils/user';
 import { assign, createMachine } from 'xstate';
+import { useActor } from '@xstate/vue';
+import { useInterpret } from '@xstate/vue';
 
 const initialContext = {
   currentUser: {
@@ -8,14 +10,17 @@ const initialContext = {
   },
 };
 
-type Context = typeof initialContext;
-
-const initialStateMachine = createMachine<Context>(
+const initialStateMachine = createMachine<typeof initialContext>(
   {
     id: 'initialState',
     context: initialContext,
-    initial: 'getInitialState',
+    initial: 'none',
     states: {
+      none: {
+        on: {
+          GET: 'getInitialState',
+        },
+      },
       getInitialState: {
         invoke: {
           id: 'getInitialState',
@@ -39,7 +44,7 @@ const initialStateMachine = createMachine<Context>(
       saveData: assign({
         currentUser: (_, e) => e.data,
       }),
-      logout: logout,
+      logout,
     },
     services: {
       getInitialState: async () => {
@@ -48,5 +53,9 @@ const initialStateMachine = createMachine<Context>(
     },
   },
 );
+
+const interpreter = useInterpret(initialStateMachine);
+
+export const useInitialStateMachine = () => useActor(interpreter);
 
 export default initialStateMachine;

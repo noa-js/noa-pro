@@ -1,30 +1,28 @@
 import { createMachine } from 'xstate';
+import { useActor, useInterpret } from '@xstate/vue';
 
 const initialContext = {
   collapse: false,
 };
 
-type Context = typeof initialContext;
-
 const KEY = 'collapsed';
 const STORAGE = localStorage;
 
-const initialStateMachine = createMachine<Context>(
+const sidebarCollapseMachine = createMachine<typeof initialContext>(
   {
-    id: 'initialState',
+    id: 'routeMenuCollapse',
     context: initialContext,
     initial: 'none',
     states: {
       none: {
-        on: {
-          '': [{ target: 'isCollapsed', cond: 'isCollapsed' }, { target: 'notCollapsed' }],
-        },
+        always: [{ target: 'isCollapsed', cond: 'isCollapsed' }, { target: 'notCollapsed' }],
       },
       isCollapsed: {
         on: {
           CLICK: {
             target: 'notCollapsed',
             actions: () => {
+              console.log('111');
               STORAGE.setItem(KEY, 'false');
             },
           },
@@ -49,4 +47,8 @@ const initialStateMachine = createMachine<Context>(
   },
 );
 
-export default initialStateMachine;
+const interpreter = useInterpret(sidebarCollapseMachine);
+
+export const useSideBarCollapse = () => useActor(interpreter);
+
+export default sidebarCollapseMachine;
