@@ -5,7 +5,7 @@ import pageZhCN from './page/zh_CN.yaml';
 
 const i18n = createI18n({
   legacy: false,
-  locale: 'en_US',
+  locale: localStorage.getItem('locale') || 'en_US',
   globalInjection: true,
   messages: {
     en_US: {

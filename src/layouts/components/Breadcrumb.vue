@@ -1,6 +1,6 @@
 <template>
   <div class="page-header-container">
-    <el-breadcrumb separator="/">
+    <el-breadcrumb separator="/" v-if="!pageNames.includes('not-found')">
       <el-breadcrumb-item
         :key="item"
         :to="index < pageNames.length - 1 ? { name: item.slice('page-'.length) } : undefined"
@@ -30,7 +30,7 @@
         if (router.getRoutes().find((v) => v.name == routePath)) {
           pageNames.push(pageName);
         } else {
-          pageNames.push('page-404');
+          pageNames.push('not-found');
         }
       };
 
