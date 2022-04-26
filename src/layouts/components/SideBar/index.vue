@@ -13,7 +13,7 @@
 <script setup lang="ts">
   import { useRouter } from 'vue-router';
   import SideBarMenu, { useSideBarMenu } from './SideBarMenu.vue';
-  import basicConfig from '@/../config/basic';
+  import basicConfig from '~/config/basic';
   import { useSideBarCollapse } from '@/machines/sideBarCollapse.machine';
 
   const router = useRouter();

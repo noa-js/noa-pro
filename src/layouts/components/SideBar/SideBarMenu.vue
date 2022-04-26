@@ -40,7 +40,7 @@
 <script setup lang="ts">
   import { useRoute } from 'vue-router';
   import SideBarItem from './SideBarItem.vue';
-  import routesMenu from '@/../config/routerMenu';
+  import routesMenu from '~/config/routerMenu';
   import { useSideBarCollapse } from '@/machines/sideBarCollapse.machine';
   import type { RouteRecordNormalized } from 'vue-router';
 
