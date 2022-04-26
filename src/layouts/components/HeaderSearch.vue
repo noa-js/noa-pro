@@ -2,7 +2,7 @@
   <div class="header-search">
     <el-select
       class="header-search__select"
-      v-model="searchSelected"
+      v-model="state.context.searchSelected"
       :placeholder="t('search-placeholder')"
       :remote-method="handleQuery"
       filterable
@@ -15,7 +15,7 @@
       </template>
       <el-option
         :key="item.value"
-        v-for="item in options"
+        v-for="item in state.context.options"
         :label="item.label"
         :value="item.value"
       />
@@ -24,49 +24,23 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import { useRouter } from 'vue-router';
   import { Search } from '@element-plus/icons-vue';
-
-  type Option = {
-    label: string;
-    value: string;
-  };
+  import { useHeaderSearch } from '@/machines/headerSearch.machine';
 
   const { t } = useI18n();
-  const router = useRouter();
+  const { state, send } = useHeaderSearch();
 
-  const searchSelected = ref('');
-  const options = ref<Option[]>([]);
   const handleQuery = (searchValue: string) => {
-    if (searchValue) {
-      options.value = router
-        .getRoutes()
-        .filter(
-          (route) =>
-            route.name !== undefined &&
-            !t(`page-${route.name as string}`).includes(route.name as string) &&
-            t(`page-${route.name as string}`)
-              .toLowerCase()
-              .includes(searchValue.toLocaleLowerCase()),
-        )
-        .map((route) => ({
-          label: t(`page-${route.name as string}`),
-          value: route.name as string,
-        }));
-    } else {
-      options.value = [];
-    }
+    send({ type: 'SEARCH', payload: { searchValue } });
   };
 
-  const handleOnChange = (routeName: any) => {
-    router.push({ name: routeName });
+  const handleOnChange = (name: any) => {
+    send({ type: 'GOTO', payload: { name } });
   };
 
   const handleFocus = () => {
-    options.value = [];
-    searchSelected.value = '';
+    send('FOCUS');
   };
 </script>
 
