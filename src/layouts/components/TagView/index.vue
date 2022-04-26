@@ -61,11 +61,13 @@
   import Tag from './Tag.vue';
   import type { LocationQuery, RouteParams } from 'vue-router';
   import { CloseBold, RefreshLeft, ArrowDownBold } from '@element-plus/icons-vue';
+  import { useReloadPage } from '@/machines/reloadPage.machine';
 
   const route = useRoute();
   const router = useRouter();
   const { t } = useI18n();
   const tags = useStorage<TagData[]>('tags', [], sessionStorage);
+  const { send: reloadPageSend } = useReloadPage();
   const whiteList = ['user-signin', 'all'];
 
   const deleteTag = (fullPath: string) => {
@@ -81,7 +83,7 @@
   };
 
   const refreshPage = () => {
-    router.go(0);
+    reloadPageSend('toggle');
   };
 
   watch(

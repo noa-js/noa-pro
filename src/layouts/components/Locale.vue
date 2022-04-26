@@ -6,7 +6,7 @@
         <el-dropdown-menu>
           <el-dropdown-item
             :key="local.value"
-            v-for="local in localeConfig"
+            v-for="local in localeConfig.locales"
             @click="handleChangeLanguage(local.value)"
           >
             {{ local.label }}
@@ -24,7 +24,7 @@
   import localeConfig from '@/../config/locale';
   import locales from '@/locales';
 
-  const locale = useStorage('locale', 'en_US');
+  const locale = useStorage('locale', localeConfig.default);
 
   const handleChangeLanguage = (language: string) => {
     locale.value = language;

@@ -3,7 +3,7 @@
     <template #default>
       <router-view v-slot="{ Component }" v-if="props.openAnimation ?? false">
         <transition appear enter-active-class="animate__animated animate__fadeIn">
-          <component :is="Component" />
+          <component :is="Component" v-if="state.matches('show')" />
         </transition>
       </router-view>
       <router-view v-else />
@@ -17,11 +17,13 @@
 </template>
 
 <script setup lang="ts">
+  import { useReloadPage } from '@/machines/reloadPage.machine';
   type Props = {
     openAnimation?: boolean;
   };
 
   const props = defineProps<Props>();
+  const { state } = useReloadPage();
 </script>
 
 <style lang="scss" scoped>
