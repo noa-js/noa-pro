@@ -3,10 +3,16 @@
     <template #default>
       <router-view v-slot="{ Component }" v-if="props.openAnimation ?? false">
         <transition appear enter-active-class="animate__animated animate__fadeIn">
-          <component :is="Component" v-if="state.matches('show')" />
+          <keep-alive>
+            <component :is="Component" v-if="state.matches('show')" />
+          </keep-alive>
         </transition>
       </router-view>
-      <router-view v-else />
+      <router-view v-else v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" v-if="state.matches('show')" />
+        </keep-alive>
+      </router-view>
     </template>
     <template #fallback>
       <transition enter-active-class="animate__animated animate__fadeIn">
