@@ -4,7 +4,7 @@ type LocalConfig = {
 };
 
 const localConfig: LocalConfig = {
-  default: 'en_US',
+  default: localStorage.getItem('locale') || 'en_US',
   locales: [
     {
       label: 'English',

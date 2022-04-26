@@ -65,6 +65,10 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
           find: '@',
           replacement: resolve(__dirname, 'src'),
         },
+        {
+          find: '~',
+          replacement: resolve(__dirname),
+        },
       ],
     },
     server: {

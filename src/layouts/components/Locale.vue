@@ -5,11 +5,11 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item
-            :key="local.value"
-            v-for="local in localeConfig.locales"
-            @click="handleChangeLanguage(local.value)"
+            :key="locale.value"
+            v-for="locale in localeConfig.locales"
+            @click="handleChangeLanguage(locale.value)"
           >
-            {{ local.label }}
+            {{ locale.label }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -18,21 +18,15 @@
 </template>
 
 <script setup lang="ts">
-  import { watchEffect } from 'vue';
-  import { useStorage } from '@vueuse/core';
   import { Flag } from '@element-plus/icons-vue';
-  import localeConfig from '@/../config/locale';
-  import locales from '@/locales';
+  import localeConfig from '~/config/locale';
+  import { useLocale } from '@/machines/locale.machine';
 
-  const locale = useStorage('locale', localeConfig.default);
+  const { send } = useLocale();
 
   const handleChangeLanguage = (language: string) => {
-    locale.value = language;
+    send({ type: 'CHANGE_LOCALE', payload: language });
   };
-
-  watchEffect(() => {
-    locales.global.locale.value = locale.value;
-  });
 </script>
 
 <style lang="scss" scoped>
