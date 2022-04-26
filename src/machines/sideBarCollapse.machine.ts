@@ -22,7 +22,6 @@ const sidebarCollapseMachine = createMachine<typeof initialContext>(
           CLICK: {
             target: 'notCollapsed',
             actions: () => {
-              console.log('111');
               STORAGE.setItem(KEY, 'false');
             },
           },

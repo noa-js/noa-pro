@@ -39,8 +39,6 @@
 
   const { state: initialState } = useInitialStateMachine();
 
-  console.log(initialState);
-
   const handleClick = () => {
     sideBarCollapseSend('CLICK');
   };
